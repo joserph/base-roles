@@ -83,7 +83,7 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
         
-        return view('roles.editar', compact('role', 'permission', 'rolePermissions'));
+        return view('roles.edit', compact('role', 'permission', 'rolePermissions'));
     }
 
     /**
@@ -99,6 +99,13 @@ class RoleController extends Controller
             'name' => 'required',
             'permission' => 'required'
         ]);
+        $role = Role::find($id);
+        $role->name = $request->input('name');
+        $role->save();
+
+        $role->syncPermissions($request->input('permission'));
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -109,6 +116,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('roles')->where('id', $id)->delete();
+
+        return redirect()->route('roles.index');
     }
 }
