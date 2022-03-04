@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            @can('crear-rol')
+                            @can('crear-blog')
                                 <a class="btn btn-info" href="{{ route('blogs.create') }}"><i class="fas fa-plus-circle"></i> Crear</a>
                             @endcan
                             <hr>
@@ -29,10 +29,10 @@
                                                 <th scope="row">{{ $blog->titulo }}</th>
                                                 <th scope="row">{{ $blog->contenido }}</th>
                                                 <td>
-                                                    @can('editar-rol')
+                                                    @can('editar-blog')
                                                         <a class="btn btn-warning" href="{{ route('blogs.edit', $blog->id) }}"><i class="far fa-edit"></i></a>
                                                     @endcan
-                                                    @can('borrar-rol')
+                                                    @can('borrar-blog')
                                                         {!! Form::open(['method' => 'DELETE', 'route' => ['blogs.destroy', $blog->id], 'style' => 'display:inline']) !!}
                                                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}

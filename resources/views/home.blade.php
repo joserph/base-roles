@@ -10,23 +10,62 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="col-md-4 col-xl-4">
-                                <div class="card bg-c-blue order-card">
-                                    <div class="card-blok">
-                                        <h5>Usuarios</h5>
-                                        @php
-                                            use App\Models\User;
-                                            $countUsers = User::count();
-                                        @endphp
-                                        <h2 class="text-right">
-                                            <i class="fa fa-users f-left"></i><span>{{ $countUsers }}</span>
-                                        </h2>
-                                        <p class="m-b-0 text-right">
-                                            <a href="{{ route('users.index') }}" class="text-white">Ver mas</a>
-                                        </p>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="card bg-c-blue order-card">
+                                        <div class="card-blok">
+                                            <h5>Usuarios</h5>
+                                            @php
+                                                use App\Models\User;
+                                                $countUsers = User::count();
+                                            @endphp
+                                            <h2 class="text-right">
+                                                <i class="fa fa-users f-left"></i><span>{{ $countUsers }}</span>
+                                            </h2>
+                                            <p class="m-b-0 text-right">
+                                                <a href="{{ route('users.index') }}" class="text-white">Ver mas</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div class="col-sm">
+                                    <div class="card bg-c-green order-card">
+                                        <div class="card-blok">
+                                            <h5>Roles</h5>
+                                            @php
+                                                use Spatie\Permission\Models\Role;
+                                                $countRoles = Role::count();
+                                            @endphp
+                                            <h2 class="text-right">
+                                                <i class="fas fa-user-cog f-left"></i><span>{{ $countRoles }}</span>
+                                            </h2>
+                                            <p class="m-b-0 text-right">
+                                                <a href="{{ route('roles.index') }}" class="text-white">Ver mas</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="card bg-c-pink order-card">
+                                        <div class="card-blok">
+                                            <h5>Blogs</h5>
+                                            @php
+                                                use App\Models\Blog;
+                                                $countBlogs = Blog::count();
+                                            @endphp
+                                            <h2 class="text-right">
+                                                <i class="fas fa-blog f-left"></i><span>{{ $countBlogs }}</span>
+                                            </h2>
+                                            <p class="m-b-0 text-right">
+                                                <a href="{{ route('blogs.index') }}" class="text-white">Ver mas</a>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
                             
                         </div>
                     </div>
