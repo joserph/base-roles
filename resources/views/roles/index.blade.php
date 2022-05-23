@@ -10,27 +10,27 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            @can('crear-rol')
+                            @can('create-rol')
                                 <a class="btn btn-info" href="{{ route('roles.create') }}"><i class="fas fa-plus-circle"></i> Crear</a>
                             @endcan
                             <hr>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
+                            <div class="table-responsive col-md-6 offset-md-3">
+                                <table class="table table-striped table-sm">
                                     <thead style="background-color: #6777ef;">
                                     <tr>
-                                        <th style="color: #fff" scope="col">Rol</th>
-                                        <th style="color: #fff" scope="col">Acciones</th>
+                                        <th class="text-center" style="color: #fff" scope="col">Rol</th>
+                                        <th class="text-center" style="color: #fff" scope="col">Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($roles as $role)
                                             <tr>
                                                 <th scope="row">{{ $role->name }}</th>
-                                                <td>
-                                                    @can('editar-rol')
+                                                <td class="text-center">
+                                                    @can('edit-rol')
                                                         <a class="btn btn-warning" href="{{ route('roles.edit', $role->id) }}"><i class="far fa-edit"></i></a>
                                                     @endcan
-                                                    @can('borrar-rol')
+                                                    @can('delete-rol')
                                                         {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' => 'display:inline']) !!}
                                                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}

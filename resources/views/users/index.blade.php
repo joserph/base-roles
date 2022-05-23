@@ -10,37 +10,43 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <a class="btn btn-info" href="{{ route('users.create') }}"><i class="fas fa-plus-circle"></i> Crear</a>
+                            @can('create-user')
+                                <a class="btn btn-info" href="{{ route('users.create') }}"><i class="fas fa-plus-circle"></i> Crear</a>
+                            @endcan
                             <hr>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped table-sm">
                                     <thead style="background-color: #6777ef;">
                                     <tr>
-                                        <th style="color: #fff" scope="col">ID</th>
-                                        <th style="color: #fff" scope="col">Nombre</th>
-                                        <th style="color: #fff" scope="col">E-mail</th>
-                                        <th style="color: #fff" scope="col">Rol</th>
-                                        <th style="color: #fff" scope="col">Acciones</th>
+                                        <th class="text-center" style="color: #fff" scope="col">ID</th>
+                                        <th class="text-center" style="color: #fff" scope="col">Nombre</th>
+                                        <th class="text-center" style="color: #fff" scope="col">E-mail</th>
+                                        <th class="text-center" style="color: #fff" scope="col">Rol</th>
+                                        <th class="text-center" style="color: #fff" scope="col">Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
-                                                <th scope="row">{{ $user->id }}</th>
+                                                <th class="text-center" scope="row">{{ $user->id }}</th>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>
+                                                <td class="text-center">
                                                     @if (!empty($user->getRoleNames()))
                                                         @foreach ($user->getRoleNames() as $rolName)
                                                             <h5><span class="badge badge-dark">{{ $rolName }}</span></h5>
                                                         @endforeach
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <a class="btn btn-warning" href="{{ route('users.edit', $user->id) }}"><i class="far fa-edit"></i></a>
-                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
-                                                        {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
-                                                    {!! Form::close() !!}
+                                                <td class="text-center">
+                                                    @can('edit-user')
+                                                        <a class="btn btn-warning" href="{{ route('users.edit', $user->id) }}"><i class="far fa-edit"></i></a>
+                                                    @endcan
+                                                    @can('delete-user')
+                                                        {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'style' => 'display:inline']) !!}
+                                                            {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
+                                                        {!! Form::close() !!}
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

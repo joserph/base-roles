@@ -50,16 +50,16 @@
                                 <div class="col-sm">
                                     <div class="card bg-c-pink order-card">
                                         <div class="card-blok">
-                                            <h5>Blogs</h5>
+                                            <h5>Permisos</h5>
                                             @php
-                                                use App\Models\Blog;
-                                                $countBlogs = Blog::count();
+                                                use Spatie\Permission\Models\Permission;
+                                                $countPermissions = Permission::count();
                                             @endphp
                                             <h2 class="text-right">
-                                                <i class="fas fa-blog f-left"></i><span>{{ $countBlogs }}</span>
+                                                <i class="fas fa-users-cog f-left"></i><span>{{ $countPermissions }}</span>
                                             </h2>
                                             <p class="m-b-0 text-right">
-                                                <a href="{{ route('blogs.index') }}" class="text-white">Ver mas</a>
+                                                <a href="{{ route('permissions.index') }}" class="text-white">Ver mas</a>
                                             </p>
                                         </div>
                                     </div>

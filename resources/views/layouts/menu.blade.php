@@ -9,9 +9,6 @@
         <i class="fas fa-user-cog"></i><span>Roles</span>
     </a>
     <a class="nav-link" href="{{ route('permissions.index') }}">
-        <i class="fas fa-user-cog"></i><span>Permisos</span>
-    </a>
-    <a class="nav-link" href="{{ route('blogs.index') }}">
-        <i class="fas fa-blog"></i><span>Blogs</span>
+        <i class="fas fa-users-cog"></i><span>Permisos</span>
     </a>
 </li>
